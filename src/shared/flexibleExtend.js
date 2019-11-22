@@ -32,10 +32,20 @@ export function hpx2dp(px) {
   return getWindowHeight() / 1334 * parseFloat(px)
 }
 
+
+/**
+ * 物理像素转逻辑像素
+ * @param dp
+ */
+export function wdp2px(dp) {
+  return dp * 750 / getWindowWidth()
+}
+
 /**
  * 物理像素转rem
  * @param dp
- * @returns {number}
+ * @param unit
+ * @returns {string}
  */
 export function dp2rem(dp, unit = true) {
   return unit ? window.lib.flexible.px2rem(parseFloat(dp)) + 'rem' : window.lib.flexible.px2rem(parseFloat(dp))

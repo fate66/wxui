@@ -1,3 +1,5 @@
 export * from './element'
 export * from './flexibleExtend'
 export * from './utils'
+export * from './cookie'
+export * from './localStorage'

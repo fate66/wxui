@@ -162,3 +162,40 @@ export function logError(info, err) {
     throw err
   }
 }
+
+export function log(...msg) {
+  if (process.env.NODE_ENV === 'development' && typeof console !== 'undefined') {
+    console.log(...msg)
+  }
+}
+
+export function urlQuery(key) {
+  let m = location.search.match(new RegExp(`(\\?|&)(${key})=([^&$]*)`))
+  return m ? m[3] : ''
+}
+
+export function ps(cb) {
+  return new Promise((resolve, reject) => {
+    cb(resolve, reject)
+  })
+}
+
+export function pageName() {
+  let list = window.location.href.split('/')
+  let list2 = list[list.length - 1].split('?')
+  return list2[0].split('.')[0]
+}
+
+export function uuid() {
+  var s = []
+  var hexDigits = '0123456789abcdef'
+  for (var i = 0; i < 36; i++) {
+    s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1)
+  }
+  s[14] = '4' // bits 12-15 of the time_hi_and_version field to 0010
+  s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1) // bits 6-7 of the clock_seq_hi_and_reserved to 01
+  s[8] = s[13] = s[18] = s[23] = '-'
+  let uuid = s.join('')
+  return uuid
+}
+

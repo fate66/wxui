@@ -41,12 +41,7 @@
         default: false
       }
     },
-    computed: {
-      // rwh() {
-      //   let w = this.$utils.widthpx2rem(this.width)
-      //   return w.toFixed(5) + 'rem'
-      // }
-    },
+    computed: {},
     data() {
       return {}
     },
@@ -91,7 +86,7 @@
             display: flex;
             align-items: center;
             height: 87px;
-            ont-family: PingFang-SC-Regular;
+            font-family: PingFang-SC-Regular;
             font-size: 32px;
             color: #888888;
             letter-spacing: 0;
@@ -107,6 +102,7 @@
     .no-border-bottom {
         border-bottom: #ffff 1px solid;
     }
+
     .border-top {
         border-top: #DDDDDD 1px solid;
     }

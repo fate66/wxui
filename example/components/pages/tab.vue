@@ -10,6 +10,9 @@
         <div class="title">自定义样式，可滚动</div>
         <wx-tab :tabs="tabs2" :tab-width="100" :tab-margin-left="40"></wx-tab>
 
+        <div class="title">自定义样式，宽度自适应</div>
+        <wx-tab :tabs="tabs3" :tab-margin-left="40"></wx-tab>
+
         <div class="title">字体颜色默认与选中</div>
         <wx-tab :tabs="tabs2" default-color="red" active-color="black" :tab-width="100" :tab-margin-left="40"></wx-tab>
     </div>
@@ -34,6 +37,15 @@
           {label: '菜单四', id: 3},
           {label: '菜单五', id: 4},
           {label: '菜单六', id: 5, tabMarginLeft: 100},
+          {label: '菜单七', id: 6, tabMarginRight: 40}],
+        tabs3: [{
+          label: '菜单一', id: 0
+        },
+          {label: '菜单二二', id: 1},
+          {label: '菜单三', id: 2},
+          {label: '菜单四四四', id: 3},
+          {label: '菜单五', id: 4},
+          {label: '菜单六', id: 5},
           {label: '菜单七', id: 6, tabMarginRight: 40}],
         selIndex: 2,
         selItem: {label: '菜单三', id: 2}

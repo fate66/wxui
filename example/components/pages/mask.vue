@@ -6,7 +6,7 @@
 
         <wx-mask v-show="show2" :animation="true" @click="()=>show2=false"></wx-mask>
 
-        <wx-button :margin-top="100" :animation="true" @click="show2=true" background="red" :width="400">带动画显示mask
+        <wx-button :margin-top="100" @click="show2=true" background="red" :width="400">带动画显示mask
         </wx-button>
 
     </div>

@@ -8,9 +8,10 @@
                      :tabMarginLeft="tabMarginLeft"
                      :index="i"
                      :tabWidth="tabWidth"
+                     :ref="`tabItem${i}`"
                      v-bind="$attrs"
                      @click="click"></wx-tab-item>
-        <div class="scroll" :style="scrolSty">
+        <div class="scroll" :style="scrolSty" v-if="showLine">
             <div class="tab-line" :style="lineSty">
                 <span class="line-item" :style="lineItemSty" v-if="lineWidth"></span>
             </div>
@@ -32,7 +33,7 @@
    *  tabMarginRight 最后一个tab-item距离右边的距离
    */
   import WxTabItem from './WxTabItem'
-  import {wpx2rem, hpx2rem} from 'src/shared'
+  import {wpx2rem, hpx2rem, wdp2px, log} from 'src/shared'
 
   export default {
     name: 'WxTab',
@@ -68,7 +69,9 @@
     },
     data() {
       return {
-        selIndex: this.value
+        selIndex: this.value,
+        innerSumWidth: 0,
+        showLine: false
       }
     },
     computed: {
@@ -81,6 +84,15 @@
           height: hpx2rem(this.lineHeight)
         }
       },
+      autoWidth() {
+        let f = !this.tabWidth
+        for (let item of this.tabs) {
+          if (!item.tabWidth) {
+            f = true
+          }
+        }
+        return f
+      },
       sumWidth() {
         let w = 0
         if (this.average) {
@@ -90,6 +102,7 @@
             w += item.tabWidth || this.tabWidth
             w += item.tabMarginLeft || this.tabMarginLeft
           }
+          this.autoWidth && (w = this.innerSumWidth)
           if (this.tabs.pop.tabMarginRight) w += this.tabs.pop.tabMarginRight
         }
         return w
@@ -109,6 +122,7 @@
           width = this.lineWidthPX
         } else {
           width = this.tabs[this.selIndex].tabWidth || this.tabWidth
+          width == 0 && (this.$refs[`tabItem${this.selIndex}`] && (width = wdp2px(this.$refs[`tabItem${this.selIndex}`][0].$el.offsetWidth)))
         }
         return {
           width: wpx2rem(width),
@@ -124,7 +138,7 @@
           let w = 0
           this.tabs.forEach((item, i) => {
             if (i <= this.selIndex) {
-              w += item.tabWidth || this.tabWidth
+              w += this.autoWidth ? wdp2px(this.$refs[`tabItem${i}`][0].$el.offsetWidth) : item.tabWidth || this.tabWidth
               w += item.tabMarginLeft || this.tabMarginLeft
             }
           })
@@ -137,6 +151,9 @@
     },
     created() {
     },
+    mounted() {
+      this.tabUd()
+    },
     components: {WxTabItem},
     methods: {
       click(index, data) {
@@ -144,6 +161,19 @@
         this.selIndex = index
         this.$emit('input', index)
         this.$emit('click', data, index)
+      },
+      tabDomW() {
+        let w = 0
+        for (let i = 0; i < this.tabs.length; i++) {
+          w += wdp2px(this.$refs[`tabItem${i}`][0].$el.offsetWidth)
+          w += this.tabs[i].tabMarginLeft || this.tabMarginLeft
+        }
+        this.innerSumWidth = w
+        this.showLine = true
+        log(this.innerSumWidth, 'this._sumWidth')
+      },
+      tabUd() {
+        this.$refs[`tabItem${this.tabs.length - 1}`] && this.tabDomW()
       }
     }
   }
@@ -191,6 +221,9 @@
                     display: inline-block;
                 }
             }
+        }
+        &::-webkit-scrollbar {
+            display: none
         }
     }
 

@@ -58,7 +58,7 @@
     },
     computed: {
       tabSty() {
-        let width, marginLeft, flex, marginRight, color
+        let width, marginLeft, flex, marginRight, color, data
         color = this.isActive ? this.activeColor : this.defaultColor
         if (!this.average) {
           width = wpx2rem(this.data.tabWidth || this.tabWidth)
@@ -67,7 +67,12 @@
         } else {
           flex = 1
         }
-        return {width, marginLeft, flex, marginRight, color}
+        if (this.data.tabWidth || this.tabWidth) {
+          data = {width, marginLeft, flex, marginRight, color}
+        } else {
+          data = {marginLeft, flex, marginRight, color}
+        }
+        return data
       }
     },
     created() {

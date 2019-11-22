@@ -20,7 +20,7 @@
       },
       marginTop: {
         type: Number,
-        default: 0
+        default: 50
       },
       borderRadius: {
         type: Number,

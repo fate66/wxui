@@ -11,11 +11,11 @@ export function getWindowWidth() {
       window.innerWidth Internet Explorer、Chrome、Firefox、Opera 以及 Safari
       document.body.clientWidth || document.documentElement.clientWidth  Internet Explorer 8、7、6、5
    */
-  return window.innerWidth || document.body.clientWidth || document.documentElement.clientWidth || 0
+  return screen.width || 0
 }
 
 export function getWindowHeight() {
-  return window.innerHeight || document.body.clientHeight || document.documentElement.clientHeight || 0
+  return screen.height || 0
 }
 
 /**

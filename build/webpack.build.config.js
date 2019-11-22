@@ -27,7 +27,7 @@ const generateEntrys = () => {
 module.exports = merge(baseConfig, {
   entry: generateEntrys(),
   output: {
-    path: utils.resolve('lib'),
+    path: utils.resolve('dist'),
     filename: '[name].js',
     library: 'wxui',
     libraryTarget: 'umd',
