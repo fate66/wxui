@@ -1,3 +1,7 @@
+import {ua} from './ua'
+import {getWindowHeight} from './element'
+import {dp2rem} from './flexibleExtend'
+
 export function isUndef(v) {
   return v === undefined || v === null
 }
@@ -15,6 +19,7 @@ export function isFalse(v) {
 }
 
 /**
+ * 是否是基本类型
  * Check if value is primitive.
  */
 export function isPrimitive(value) {
@@ -88,6 +93,7 @@ export function makeMap(str, expectsLowerCase) {
 
 /**
  * Remove an item from an array.
+ * 移除数组中的某个值，这个值为基本数据类型
  */
 export function remove(arr, item) {
   if (arr.length) {
@@ -155,20 +161,6 @@ export function deepClone(obj) {
   return o
 }
 
-export function logError(info, err) {
-  if (typeof console !== 'undefined') {
-    console.error(err)
-  } else {
-    throw err
-  }
-}
-
-export function log(...msg) {
-  if (process.env.NODE_ENV === 'development' && typeof console !== 'undefined') {
-    console.log(...msg)
-  }
-}
-
 export function urlQuery(key) {
   let m = location.search.match(new RegExp(`(\\?|&)(${key})=([^&$]*)`))
   return m ? m[3] : ''
@@ -199,3 +191,90 @@ export function uuid() {
   return uuid
 }
 
+export function getUri(params) {
+  let param = ''
+  if (isPlainObject(params)) {
+    let keys = Object.keys(params)
+    if ((keys && keys.length && !(keys.includes('wfr'))) || !keys || !(keys.length)) {
+      params.wfr = urlQuery('wfr')
+      !params.wfr && Reflect.deleteProperty(params, 'wfr')
+    }
+    keys = Object.keys(params)
+    for (let key of keys) {
+      let val = typeof (params[key]) === 'object' ? JSON.stringify(params[key]) : params[key]
+      param = param + key + '=' + val + '&'
+    }
+  }
+  param = param && param.slice(0, param.length - 1)
+  return param
+}
+
+/**
+ * 保留小数，不足不补0
+ * @param num
+ */
+export function toDecimal(num, digit = 2) {
+  if (isNaN(num)) {
+    console.error('必须为数字')
+    return false
+  }
+  let capacit = 1
+  let i = 1
+  while (i <= digit) {
+    capacit *= 10
+    i++
+  }
+  return parseInt(num * capacit) / capacit
+}
+
+export function copyVal(val) {
+  console.log(val)
+  let input = document.createElement('input')
+  input.value = val
+  input.style.opacity = 0.1
+  document.body.appendChild(input)
+  if (ua.isIOS()) {
+    window.getSelection().removeAllRanges()
+    var range = document.createRange()
+    range.selectNode(input)
+    window.getSelection().addRange(range)
+    document.execCommand('copy')
+    window.getSelection().removeAllRanges()
+  } else {
+    input.select()
+    document.execCommand('Copy')
+  }
+  document.body.removeChild(input)
+}
+
+export function sort(arr) {
+  arr.sort(() => Math.random() - 0.5)
+}
+
+export function url2obj(url) {
+  const _o = {}
+  const _l = url.split('?')
+  const _s = _l.length > 1 ? _l[1] : ''
+  if (_s) {
+    for (let item of _s.split('&')) {
+      const _i = item.split('=')
+      _o[_i[0]] = _i.length > 1 ? _i[1] : ''
+    }
+  }
+  return Object.keys(_o) ? _o : ''
+}
+
+/**
+ * 适配橡皮筋
+ * @param self
+ * @param ref
+ */
+export function fixRubberUI(self, ref) {
+  if (!ua.isWX()) {
+    console.log('不是微信')
+    return false
+  }
+  if (self.$refs[ref].offsetHeight < getWindowHeight()) {
+    self.$refs[ref].style.height = dp2rem(getWindowHeight())
+  }
+}

@@ -14,6 +14,7 @@ import {DatePicker, WxDatePicker} from 'packages/DatePicker'
 import WxScroller from 'packages/WxScroller'
 import WxPageScroller from 'packages/WxPageScroller'
 import WxFixed from 'packages/WxFixed'
+import * as utils from './shared'
 
 const install = Vue => {
   if (install.installed) {
@@ -33,11 +34,12 @@ const install = Vue => {
   Vue.component(WxScroller.name, WxScroller)
   Vue.component(WxPageScroller.name, WxPageScroller)
   Vue.component(WxFixed.name, WxFixed)
-  
+
   Vue.$toast = Vue.prototype.$toast = Toast
   Vue.$picker = Vue.prototype.$picker = Picker
   Vue.$addressPicker = Vue.prototype.$addressPicker = AddressPicker
   Vue.$datePicker = Vue.prototype.$datePicker = DatePicker
+  Vue.$utils = Vue.prototype.$utils = utils
 }
 export {
   install,
@@ -58,5 +60,6 @@ export {
   WxDatePicker,
   WxScroller,
   WxPageScroller,
-  WxFixed
+  WxFixed,
+  utils
 }

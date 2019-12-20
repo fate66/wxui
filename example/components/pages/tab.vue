@@ -24,29 +24,29 @@
     data() {
       return {
         tabs: [{
-          label: '菜单一', id: 0
-        },
-          {label: '菜单二', id: 1},
-          {label: '菜单三', id: 2},
-          {label: '菜单四', id: 3}],
+                 label: '菜单一', id: 0
+               },
+               {label: '菜单二', id: 1},
+               {label: '菜单三', id: 2},
+               {label: '菜单四', id: 3}],
         tabs2: [{
-          label: '菜单一', id: 0
-        },
-          {label: '菜单二', id: 1},
-          {label: '菜单三', id: 2, tabMarginLeft: 120},
-          {label: '菜单四', id: 3},
-          {label: '菜单五', id: 4},
-          {label: '菜单六', id: 5, tabMarginLeft: 100},
-          {label: '菜单七', id: 6, tabMarginRight: 40}],
+                  label: '菜单一', id: 0
+                },
+                {label: '菜单二', id: 1},
+                {label: '菜单三', id: 2, tabMarginLeft: 120},
+                {label: '菜单四', id: 3},
+                {label: '菜单五', id: 4},
+                {label: '菜单六', id: 5, tabMarginLeft: 100},
+                {label: '菜单七', id: 6, tabMarginRight: 40}],
         tabs3: [{
-          label: '菜单一', id: 0
-        },
-          {label: '菜单二二', id: 1},
-          {label: '菜单三', id: 2},
-          {label: '菜单四四四', id: 3},
-          {label: '菜单五', id: 4},
-          {label: '菜单六', id: 5},
-          {label: '菜单七', id: 6, tabMarginRight: 40}],
+                  label: '菜单一', id: 0
+                },
+                {label: '菜单二二', id: 1},
+                {label: '菜单三', id: 2},
+                {label: '菜单四四四', id: 3},
+                {label: '菜单五', id: 4},
+                {label: '菜单六', id: 5},
+                {label: '菜单七', id: 6, tabMarginRight: 40}],
         selIndex: 2,
         selItem: {label: '菜单三', id: 2}
       }

@@ -1,5 +1,4 @@
 'use strict'
-console.log(11)
 require('./check-versions')()
 // process.env.CMD = process.argv[process.argv.length - 1]
 const ora = require('ora')

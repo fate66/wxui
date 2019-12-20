@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import pickerComponent from './src/index'
-import * as utils from 'src/shared'
 
-Vue.prototype.$utils = utils
 const WxPicker = pickerComponent
 
 const Picker = (data = {}) => {

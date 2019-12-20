@@ -17,6 +17,8 @@
    * resets 重置picker数组
    *
    */
+  import * as utils from 'src/shared'
+
   export default {
     props: {
       a: Number,
@@ -55,7 +57,7 @@
       }
     },
     created() {
-      this.lineHeight = this.$utils.hpx2dp(this.lineHeight)
+      this.lineHeight = utils.hpx2dp(this.lineHeight)
       this.reset()
     },
     computed: {
@@ -106,7 +108,7 @@
         } else {
           this.singleDeg = (this.circle ? 360 : 200) / this.length
         }
-        this.translateZ = this.$utils.dp2rem(this.r())
+        this.translateZ = utils.dp2rem(this.r())
       },
       sty(i) {
         return {transform: `rotateX(-${this.singleDeg * i}deg) translateZ(${this.translateZ})`}
@@ -179,7 +181,6 @@
             this.domRemoveClass(this.getDom(this.lastSel), 'sel-d')
             this.lastSel = i
           }
-          this.$utils.log(this.finger.currentMove, i, '选中的')
           this.emit(this.index, this.list[i])
           this.finger.prevMove = this.finger.currentMove
           return

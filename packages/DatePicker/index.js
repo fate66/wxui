@@ -1,7 +1,6 @@
 import {Picker} from '../Picker'
 import WxDatePicker from './src/WxDatePicker'
 import utils from './dateUtils'
-import {log} from 'src/shared'
 
 let CBF = null
 
@@ -42,7 +41,6 @@ const DatePicker = (data, cb) => {
   options.push(utils.getMonthArray())
   options.push(utils.getDayArray(defaults[0], parseInt(defaults[1])))
   op.options = options
-  log(options, 'options')
   op.defaultValues = defaults
   Picker(op)
 }

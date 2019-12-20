@@ -12,7 +12,6 @@
 <script>
 
   import WxScroller from '../../WxScroller'
-  import {log} from 'src/shared'
 
   export default {
     name: 'WxPageScroller',
@@ -73,11 +72,11 @@
       },
       getData() {
         if (!this.data.url) {
-          log('URL或KEY不能为空')
+          console.log('URL或KEY不能为空')
           return false
         }
         let param = Object.assign({page_no: this.page_no, page_size: this.pageSize}, this.data.params)
-        log(param, '请求的参数')
+        console.log(param, '请求的参数')
         this._http.get(this.data.url, param, res => {
           if (res._ok) {
             const list = this.get_res(res)
@@ -93,7 +92,6 @@
             }
           }
         })
-
       }
     },
     mounted() {

@@ -33,7 +33,7 @@
    *  tabMarginRight 最后一个tab-item距离右边的距离
    */
   import WxTabItem from './WxTabItem'
-  import {wpx2rem, hpx2rem, wdp2px, log} from 'src/shared'
+  import {wpx2rem, hpx2rem, wdp2px} from 'src/shared'
 
   export default {
     name: 'WxTab',
@@ -170,7 +170,6 @@
         }
         this.innerSumWidth = w
         this.showLine = true
-        log(this.innerSumWidth, 'this._sumWidth')
       },
       tabUd() {
         this.$refs[`tabItem${this.tabs.length - 1}`] && this.tabDomW()

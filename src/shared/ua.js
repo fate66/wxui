@@ -109,4 +109,4 @@ _ua.isIPhoneX_later = function () {
 _ua.isMiniprogram = function () {
   return window.__wxjs_environment === 'miniprogram'
 }
-export default _ua
+export {_ua as ua}

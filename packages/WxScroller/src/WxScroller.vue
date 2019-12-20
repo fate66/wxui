@@ -144,7 +144,7 @@
           if (this.onPullDownRefresh && this.top === 0 && this.down(e.targetTouches[0].pageY)) {
             if ((e.targetTouches[0].pageY - this.startPageY) < this.pullOffset) {
               this.move = e.targetTouches[0].pageY - this.startPageY
-              utils.log('开始上拉')
+              console.log('开始上拉')
               this.domRefresh()
             } else {
               this._refreshText = '松开即可刷新'
@@ -172,7 +172,7 @@
         if (this.onReachBottom) {
           if (!this.stopReachBottom) {
             if (e.target.scrollHeight - this.top - e.target.offsetHeight < this.bottomOffset) {
-              utils.log('开始上拉加载')
+              console.log('开始上拉加载')
               this._loadMoreText = '加载中...'
               this.startPull && this.onReachBottom()
               this.startPull = false

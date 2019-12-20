@@ -8,7 +8,7 @@
 
 <script>
 
-  import ua from 'src/shared/ua'
+  import {ua} from 'src/shared/ua'
 
   export default {
     name: 'WxIphoneX',

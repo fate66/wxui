@@ -1,6 +1,5 @@
 import {Picker} from '../Picker'
 import adsData from './addressData'
-import {log} from 'src/shared'
 
 let CBF = null
 for (let item of adsData) {
@@ -33,7 +32,6 @@ const op = {
     for (let k in data) {
       ads_val += data[k] && data[k].label ? k == 0 ? data[k].label : `-${data[k].label}` : ''
     }
-    log(ads_val, data, 'val')
     CBF(ads_val, data)
   },
   onChange(vm, {index, data}) {
@@ -53,7 +51,6 @@ const exF = (defaultValue, confirm) => {
   CBF = confirm
   let options = []
   let defaults = dfs(defaultValue)
-  log(defaults, 'defaults')
   let citys = getADSD('cityList', defaults[0] || '', adsData)
   options.push(adsData)
   options.push(citys)

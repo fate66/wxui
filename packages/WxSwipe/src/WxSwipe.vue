@@ -23,7 +23,7 @@
    *   defaultIndicatorColor 默认
    *   showIndicator  圆点
    */
-  import {wpx2rem, hpx2rem, dp2rem} from 'src/shared'
+  import {wpx2rem, dp2rem} from 'src/shared'
 
   export default {
     name: 'WxSwipe',
