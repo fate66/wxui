@@ -78,6 +78,16 @@ export default {
       path: '/fixed',
       name: 'Fixed',
       component: resolve => require(['./components/pages/fixed'], resolve)
+    },
+    {
+      path: '/radio',
+      name: 'Radio',
+      component: resolve => require(['./components/pages/radio'], resolve)
+    },
+    {
+      path: '/input',
+      name: 'Input',
+      component: resolve => require(['./components/pages/input'], resolve)
     }
   ]
 }

@@ -278,3 +278,18 @@ export function fixRubberUI(self, ref) {
     self.$refs[ref].style.height = dp2rem(getWindowHeight())
   }
 }
+
+export function push(page, params) {
+  let url = ''
+  let list = window.location.href.split('/')
+  list.length = list.length - 1
+  let d_1 = list.join('/')
+  let d_2 = `${list[0]}/${list[1]}`
+  let uri = this.getUri(params)
+  if (page.includes('/')) {
+    url = `${d_2}/${page}.html${uri ? '?' + uri : ''}`
+  } else {
+    url = `${d_1}/${page}.html${uri ? '?' + uri : ''}`
+  }
+  window.location.href = url
+}

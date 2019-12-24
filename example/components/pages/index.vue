@@ -13,7 +13,8 @@
         <wx-cell label="scroller" @click="jump('Scroller')"></wx-cell>
         <wx-cell label="pageScroller" @click="jump('PageScroller')"></wx-cell>
         <wx-cell label="fixed" @click="jump('Fixed')"></wx-cell>
-
+        <wx-cell label="radio" @click="jump('Radio')"></wx-cell>
+        <wx-cell label="input" @click="jump('Input')"></wx-cell>
 
     </div>
 </template>
