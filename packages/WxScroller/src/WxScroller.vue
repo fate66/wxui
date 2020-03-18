@@ -2,9 +2,9 @@
     <section ref="smain" class="wx-main"
              @scroll.passive="onScroll" :style="scrollSty">
         <div ref="scontent" class="wx-scroll">
-            <div class="wx-refresh" v-if="onPullDownRefresh">{{_refreshText}}</div>
+            <div class="wx-refresh" v-if="onPullDownRefresh">{{inner_refreshText}}</div>
             <slot></slot>
-            <div class="wx-loadMore" v-if="showLoadMoreText" :style="loadMoreSty">{{_loadMoreText}}</div>
+            <div class="wx-loadMore" v-if="showLoadMoreText" :style="loadMoreSty">{{inner_loadMoreText}}</div>
         </div>
     </section>
 </template>
@@ -91,8 +91,8 @@
         top: 0,
         startPageY: 0,
         move: 0,
-        _refreshText: this.refreshText,
-        _loadMoreText: this.loadMoreText,
+        inner_refreshText: this.refreshText,
+        inner_loadMoreText: this.loadMoreText,
         startPull: true, // 开始上拉回调 用于避免多次上拉回调
         scrollHeight: 0, // 滚动内容的真实高度
         offsetHeight: 0 // 拦截橡皮筋
@@ -128,7 +128,7 @@
         this.move = this.move - 10 < 0 ? 0 : this.move - 10
         this.domRefresh()
         if (this.move <= 0) {
-          this._refreshText = this.refreshText
+          this.$data._refreshText = this.refreshText
           return
         }
         window.requestAnimationFrame(() => {
@@ -147,7 +147,7 @@
               console.log('开始上拉')
               this.domRefresh()
             } else {
-              this._refreshText = '松开即可刷新'
+              this.inner_refreshText = '松开即可刷新'
             }
           }
           if ((this.scrollHeight == this.offsetHeight) || (!this.top && this.down(e.targetTouches[0].pageY)) || (this.scrollHeight - this.top - this.offsetHeight === 0 && !this.down(e.targetTouches[0].pageY))) {
@@ -161,7 +161,7 @@
           // console.log(e.changedTouches[0].pageY, '结束--')
           this.onPullDownRefresh && e.changedTouches[0].pageY - this.startPageY > this.pullOffset && this.onPullDownRefresh()
           this.startPageY = 0
-          this._refreshText = this.refreshText
+          this.inner_refreshText = this.refreshText
           this.$emit('update:stopReachBottom', false)
           this.changeTransform()
         }
@@ -173,12 +173,12 @@
           if (!this.stopReachBottom) {
             if (e.target.scrollHeight - this.top - e.target.offsetHeight < this.bottomOffset) {
               console.log('开始上拉加载')
-              this._loadMoreText = '加载中...'
+              this.inner_loadMoreText = '加载中...'
               this.startPull && this.onReachBottom()
               this.startPull = false
             }
           } else {
-            this._loadMoreText = '暂无更多'
+            this.inner_loadMoreText = '暂无更多'
           }
         }
       },

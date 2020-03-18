@@ -66,5 +66,6 @@ export {
   WxPageScroller,
   WxFixed,
   WxRadio,
+  WxInput,
   utils
 }

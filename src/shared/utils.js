@@ -198,6 +198,8 @@ export function getUri(params) {
     if ((keys && keys.length && !(keys.includes('wfr'))) || !keys || !(keys.length)) {
       params.wfr = urlQuery('wfr')
       !params.wfr && Reflect.deleteProperty(params, 'wfr')
+      params.debug = urlQuery('debug')
+      !params.debug && Reflect.deleteProperty(params, 'debug')
     }
     keys = Object.keys(params)
     for (let key of keys) {
@@ -285,7 +287,7 @@ export function push(page, params) {
   list.length = list.length - 1
   let d_1 = list.join('/')
   let d_2 = `${list[0]}/${list[1]}`
-  let uri = this.getUri(params)
+  let uri = getUri(params)
   if (page.includes('/')) {
     url = `${d_2}/${page}.html${uri ? '?' + uri : ''}`
   } else {

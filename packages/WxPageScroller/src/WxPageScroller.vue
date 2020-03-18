@@ -43,11 +43,11 @@
         showLoadMore: true,
         reachBottomSuc: false,
         startBottom: false,
-        _http: null
+        inner_http: null
       }
     },
     created() {
-      this._http = Object.keys(this.http) ? this.http : this.$http
+      this.inner_http = this.http && Object.keys(this.http) ? this.http : this.$http
       this.getData()
     },
     components: {WxScroller},
@@ -77,7 +77,7 @@
         }
         let param = Object.assign({page_no: this.page_no, page_size: this.pageSize}, this.data.params)
         console.log(param, '请求的参数')
-        this._http.get(this.data.url, param, res => {
+        this.inner_http.get(this.data.url, param, res => {
           if (res._ok) {
             const list = this.get_res(res)
             let length = list.length
