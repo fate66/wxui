@@ -60,7 +60,7 @@
 <style lang='scss' scoped>
     .wx-grid {
         width: 750px;
-        padding: 20px 0px;
+        padding: 0px 0px;
         box-sizing: border-box;
         display: flex;
         flex-wrap: wrap;

@@ -286,7 +286,8 @@ export function push(page, params) {
   let list = window.location.href.split('/')
   list.length = list.length - 1
   let d_1 = list.join('/')
-  let d_2 = `${list[0]}/${list[1]}`
+  list.length = list.length - 1
+  let d_2 = list.join('/')
   let uri = getUri(params)
   if (page.includes('/')) {
     url = `${d_2}/${page}.html${uri ? '?' + uri : ''}`

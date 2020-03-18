@@ -1,6 +1,6 @@
 {
   "name": "@fxx2019/wxui",
-  "version": "1.0.29",
+  "version": "1.0.33",
   "description": "vue组件库",
   "keywords": "vue",
   "author": "",
@@ -11,7 +11,7 @@
     "rm": "rm -rf node_modules/ && rm package-lock.json",
     "build": "node build/webpack-build --mode production",
     "dev:web": "webpack-dev-server --inline --progress --config build/webpack.dev.example.config.js --mode development",
-    "pub": "npm run build && npm publish"
+    "bdp": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",
