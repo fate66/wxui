@@ -3,7 +3,7 @@
         <div class="wx-grid-item" :style="itemSty(i)" v-for="(item, i) in grids" :key="i"
              @click="click(i, item)">
             <img :src="item.src"/>
-            <span>{{item.label}}</span>
+            <span :style="inner_sty">{{item.label}}</span>
         </div>
     </div>
 </template>
@@ -30,11 +30,24 @@
       column: {
         type: Number,
         default: 4
+      },
+      labelColor: {
+        type: String,
+        default: ''
+      },
+      labelSize: {
+        type: Number,
+        default: 0
       }
     },
     computed: {
       signLF() {
         return (750 - this.width * this.column) / (2 * this.column)
+      },
+      inner_sty() {
+        const _o = {color: this.labelColor, 'font-size': wpx2rem(this.labelSize)}
+        !this.labelSize && Reflect.deleteProperty(_o, 'font-size')
+        return _o
       }
     },
     data() {

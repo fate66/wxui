@@ -4,7 +4,7 @@
         <wx-grid :grids="grids" @click="click"></wx-grid>
 
         <div class="title">展示3列</div>
-        <wx-grid :grids="grids" :column="3"  @click="click"></wx-grid>
+        <wx-grid :grids="grids" :label-color="'red'" :label-size="33"  :column="3"  @click="click"></wx-grid>
 
         <div class="title">展示5列</div>
         <wx-grid :grids="grids" :column="5" :width="100"  @click="click"></wx-grid>

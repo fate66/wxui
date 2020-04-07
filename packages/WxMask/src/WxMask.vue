@@ -1,7 +1,9 @@
 <template>
     <transition :name="fade">
         <div class="wx-mask" @click="click">
-            <slot></slot>
+            <div @click.stop="()=>{}">
+                <slot></slot>
+            </div>
         </div>
     </transition>
 </template>
