@@ -33,6 +33,10 @@
         type: Object,
         default: () => {
         }
+      },
+      noInitReq: {
+        type: Boolean,
+        default: false
       }
     },
     computed: {},
@@ -48,12 +52,15 @@
     },
     created() {
       this.inner_http = this.http && Object.keys(this.http) ? this.http : this.$http
-      this.getData()
+      !this.noInitReq && this.getData()
     },
     components: {WxScroller},
     methods: {
-      onPullDownRefresh() {
+      reset_scroll() {
         this.$refs.scroller.reset_scroll()
+      },
+      onPullDownRefresh() {
+        this.reset_scroll()
         this.page_no = 0
         this.stopReachBottom = false
         this.getData()
@@ -67,15 +74,17 @@
         let data
         for (let k of this.data.key) {
           data = res[k]
+          res = data
         }
         return data
       },
-      getData() {
+      getData(data = {}) {
         if (!this.data.url) {
           console.log('URL或KEY不能为空')
           return false
         }
-        let param = Object.assign({page_no: this.page_no, page_size: this.pageSize}, this.data.params)
+        data.hasOwnProperty('page_no') && (this.page_no = data.page_no)
+        let param = Object.assign({page_no: this.page_no, page_size: this.pageSize}, this.data.params, data)
         console.log(param, '请求的参数')
         this.inner_http.get(this.data.url, param, res => {
           if (res._ok) {

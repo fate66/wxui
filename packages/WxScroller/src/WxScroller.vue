@@ -107,8 +107,8 @@
       }
     },
     methods: {
-      reset_scroll() {
-        this.$refs.smain.scrollTop = 0
+      reset_scroll(num) {
+        this.$refs.smain.scrollTop = num || 0
       },
       changeStartPull() {
         this.$nextTick(() => {
