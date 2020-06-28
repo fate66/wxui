@@ -1,6 +1,6 @@
 <template>
     <transition :name="fade">
-        <div class="wx-mask" @click="click">
+        <div class="wx-mask" @click="click" :style="{background: `rgba(0, 0, 0, ${opacity})`}">
             <div @click.stop="()=>{}">
                 <slot></slot>
             </div>
@@ -11,7 +11,16 @@
 <script>
   export default {
     name: 'WxMask',
-    props: ['animation'],
+    props: {
+      animation: {
+        type: String,
+        default: ''
+      },
+      opacity: {
+        type: Number,
+        default: 0.5
+      }
+    },
     data() {
       return {
         fade: this.animation && 'fade'
