@@ -155,8 +155,8 @@
         return this.$refs['ref' + i][0]
       },
       emit(index, data) {
-        this.$emit('change', {index, data})
         this.value = data
+        this.$emit('change', {index, data})
       },
       /**
        * 用户结束滑动，应该慢慢放慢，最终停止。从而需要 a(加速度)
