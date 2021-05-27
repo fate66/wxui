@@ -72,6 +72,14 @@
         if (index == 1) {
           vm.$set(vm.cacheData, 2, utils.getDayArray(this.cache[0], this.cache[1] || 1))
         }
+        /**
+         * 该方法主要用于收集子组件选中的值，与滚轮内部修改选中值的操作为异步操作
+         * 当第一个滚轮改变时，会触发第三个滚动的变动，第三个滚轮的内部使用了nextTick 选中默认值 如果实时收集第三个滚动 则会出现无法
+         * 收集第三个滚轮的当前值情况 所以使用 setTimeout 延迟收集
+         */
+        setTimeout(() => {
+          this.confirm()
+        })
         this.confirm()
       }
     },

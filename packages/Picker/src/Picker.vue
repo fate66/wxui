@@ -12,11 +12,11 @@
 </template>
 
 <script>
-  /**
-   * a 加速度
-   * resets 重置picker数组
-   *
-   */
+    /**
+     * a 加速度
+     * resets 重置picker数组
+     *
+     */
   import * as utils from 'src/shared'
 
   export default {
@@ -96,6 +96,27 @@
             }
           }
         })
+        /**
+         *  如果组件已经初始化，当默认值改变时，组件就会出bug，原因就是当默认值改变时会触发
+         *  list重置，这里具体如何处理 还没想好 并且组件初始化之后 需要改变默认值的情况 在业务代码中
+         *  也可以处理 后期遇到具体使用场景 再决定
+         */
+        // this.$nextTick(() => {
+        //     if (this.resets.includes(this.index)) {
+        //         if (this.length) {
+        //             console.log(222)
+        //             this.domRemoveClass(this.getDom(this.lastSel), 'sel-d')
+        //             this.lastSel = this.defaultIndex
+        //             this.dom(this.defaultIndex)
+        //             this.finger.currentMove = this.defaultIndex
+        //             this.domAddClass(this.getDom(this.defaultIndex), 'sel-d')
+        //             // this.emit(this.index, this.list[0])
+        //             this.value = this.list[this.defaultIndex]
+        //         } else {
+        //             this.value = {}
+        //         }
+        //     }
+        // })
       }
     },
     methods: {
@@ -236,11 +257,13 @@
         height: 500px;
         z-index: 999;
         flex: 1;
+
         .pick-box-content {
             width: 100%;
             height: 100%;
             overflow: hidden;
             position: relative;
+
             .line {
                 box-shadow: inset 0 -1px 0 0 #CDCDCD, inset 0 1px 0 0 #CDCDCD;
                 position: absolute;
@@ -249,6 +272,7 @@
                 top: 50%;
                 width: 100%;
                 height: 72px;
+
                 .wheel {
                     width: 100%;
                     height: 72px;
@@ -257,6 +281,7 @@
                     position: absolute;
                     left: 0;
                     top: 0;
+
                     div {
                         height: 72px;
                         line-height: 72px;
@@ -271,6 +296,7 @@
                         white-space: nowrap;
                         overflow: hidden;
                     }
+
                     .sel-d {
                         font-family: PingFang-SC-Regular;
                         font-size: 42px;
