@@ -9,7 +9,7 @@ import WxSwipe from 'packages/WxSwipe'
 import WxSwipeItem from 'packages/WxSwipeItem'
 import {Picker, WxPicker} from 'packages/Picker'
 import WxShowPan from 'packages/WxShowPan'
-import AddressPicker from 'packages/AddressPicker'
+import {AddressPicker, WxAddressPicker} from 'packages/AddressPicker'
 import {DatePicker, WxDatePicker} from 'packages/DatePicker'
 import WxScroller from 'packages/WxScroller'
 import WxPageScroller from 'packages/WxPageScroller'
@@ -38,6 +38,7 @@ const install = Vue => {
   Vue.component(WxFixed.name, WxFixed)
   Vue.component(WxRadio.name, WxRadio)
   Vue.component(WxInput.name, WxInput)
+  Vue.component(WxAddressPicker.name, WxAddressPicker)
 
   Vue.$toast = Vue.prototype.$toast = Toast
   Vue.$picker = Vue.prototype.$picker = Picker
@@ -51,6 +52,7 @@ export {
   Toast,
   Picker,
   AddressPicker,
+  WxAddressPicker,
   DatePicker,
   WxCell,
   WxMask,
