@@ -155,6 +155,11 @@
       this.tabUd()
     },
     components: {WxTabItem},
+    watch: {
+      value(val) {
+        this.selIndex = val
+      }
+    },
     methods: {
       click(index, data) {
         if (this.selIndex === index) return false

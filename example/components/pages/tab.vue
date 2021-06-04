@@ -4,6 +4,9 @@
         <div class="desc">选中的index：{{selIndex}}--{{selItem}}</div>
         <wx-tab :tabs="tabs" @click="click" v-model="selIndex"></wx-tab>
 
+        <div class="desc">选中的index：{{selIndex2}}--{{selItem2}}</div>
+        <wx-tab :tabs="tabs" @click="click2" v-model="selIndex2"></wx-tab>
+
         <div class="title">改变线的宽度，默认是tab-item的宽度</div>
         <wx-tab :tabs="tabs" :line-width="50"></wx-tab>
 
@@ -48,7 +51,9 @@
                 {label: '菜单六', id: 5},
                 {label: '菜单七', id: 6, tabMarginRight: 40}],
         selIndex: 2,
-        selItem: {label: '菜单三', id: 2}
+        selIndex2: 3,
+        selItem: {label: '菜单三', id: 2},
+        selItem2: {label: '菜单三', id: 2}
       }
     },
     created() {
@@ -56,6 +61,10 @@
     methods: {
       click(data) {
         this.selItem = data
+      },
+      click2(data, i) {
+        this.selItem2 = data
+        this.selIndex = i
       }
     }
   }
