@@ -2,9 +2,9 @@
     <div class="box">
         <div class="title">宽度、高度设置。默认全屏</div>
 
-        <wx-scroller :width="650" :height="600">
-            <div class="row" v-for="(item, i) in list" :key="i">{{i}}</div>
-        </wx-scroller>
+<!--        <wx-scroller :width="650" :height="600">-->
+<!--            <div class="row" v-for="(item, i) in list" :key="i">{{i}}</div>-->
+<!--        </wx-scroller>-->
     </div>
 </template>
 
