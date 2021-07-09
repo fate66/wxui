@@ -3,6 +3,8 @@
         <h1 class="title">日期选择：{{val}}</h1>
         <wx-button @click="click1" :width="400">弹出picker</wx-button>
 
+        <wx-date-picker class="mb" @datePicker="qs3datePicker"></wx-date-picker>
+
         <!--<h1 class="title">日期选择二：{{v2}}</h1>-->
         <!--<wx-date-picker @datePicker="datePicker"></wx-date-picker>-->
     </div>
@@ -21,10 +23,13 @@
     methods: {
       click1() {
         this.$datePicker({
-          defaultValues: '1994-08-01',
+          defaultValues: '1994-08-01'
         }, val => {
           this.val = val
         })
+      },
+      qs3datePicker(val) {
+        this.val = val
       },
       datePicker(val) {
         this.v2 = val
@@ -44,6 +49,9 @@
             margin-bottom: 80px;
             margin-left: 40px;
             margin-right: 40px;
+        }
+        .mb{
+            margin-top: 70px;
         }
     }
 

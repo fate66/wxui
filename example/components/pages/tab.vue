@@ -17,7 +17,7 @@
         <wx-tab :tabs="tabs3" :tab-margin-left="40"></wx-tab>
 
         <div class="title">字体颜色默认与选中</div>
-        <wx-tab :tabs="tabs2" default-color="red" active-color="black" :tab-width="100" :tab-margin-left="40"></wx-tab>
+        <wx-tab class="mb" :tabs="tabs2" default-color="red" active-color="black" :tab-width="100" :tab-margin-left="40"></wx-tab>
     </div>
 </template>
 
@@ -82,5 +82,9 @@
     .desc {
         margin: 20px 40px;
         font-size: 32px;
+    }
+
+    .mb{
+        margin-bottom: 120px;
     }
 </style>
