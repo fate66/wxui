@@ -13,6 +13,7 @@
    * grids: 数据源
    * width： item宽度
    * column：几列
+   * 固定宽度，框之间的距离自适应，中间框的距左距离是第一个框距左距离的两倍
    */
   import {wpx2rem} from 'src/shared'
 
