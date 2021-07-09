@@ -227,6 +227,7 @@
         overflow: auto;
         .wx-scroll {
             position: relative;
+            -webkit-overflow-scrolling: touch;
             .wx-refresh {
                 position: absolute;
                 left: 0;
