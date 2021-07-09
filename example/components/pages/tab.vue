@@ -4,8 +4,8 @@
         <div class="desc">选中的index：{{selIndex}}--{{selItem}}</div>
         <wx-tab :tabs="tabs" @click="click" v-model="selIndex"></wx-tab>
 
-        <div class="desc">选中的index：{{selIndex2}}--{{selItem2}}</div>
-        <wx-tab :tabs="tabs" @click="click2" v-model="selIndex2"></wx-tab>
+<!--        <div class="desc">选中的index：{{selIndex2}}&#45;&#45;{{selItem2}}</div>-->
+<!--        <wx-tab :tabs="tabs" @click="click2" v-model="selIndex2"></wx-tab>-->
 
         <div class="title">改变线的宽度，默认是tab-item的宽度</div>
         <wx-tab :tabs="tabs" :line-width="50"></wx-tab>

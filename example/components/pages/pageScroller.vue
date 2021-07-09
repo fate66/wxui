@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a class="title" href="https://fangxin.weidian.com/fxx_h5/weihubao/article/articleList.html">demo</a>
+<!--        <a class="title" href="https://fangxin.weidian.com/fxx_h5/weihubao/article/articleList.html">demo</a>-->
     </div>
 </template>
 
