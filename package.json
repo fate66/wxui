@@ -11,7 +11,8 @@
     "rm": "rm -rf node_modules/ && rm package-lock.json",
     "build": "node build/webpack-build --mode production",
     "dev:web": "webpack-dev-server --inline --progress --config build/webpack.dev.example.config.js --mode development",
-    "bdp": "npm run build && npm publish"
+    "bdp": "npm run build && npm publish",
+    "build": "node build/webpack.build.example.config.js -- production"
   },
   "repository": {
     "type": "git",
